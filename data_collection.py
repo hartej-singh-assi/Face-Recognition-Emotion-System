@@ -5,7 +5,7 @@ import cv2
 def data_collection():
 	cap = cv2.VideoCapture(0)
 
-	data_name = input("Enter data name ! ")
+	data_name = input("Enter data name : ")
 
 	holistic = mp.solutions.holistic
 	hands = mp.solutions.hands
@@ -48,7 +48,7 @@ def data_collection():
 			y.append(x)
 
 
-		drawing.draw_landmarks(frm, res.face_landmarks, holistic.FACE_CONNECTIONS)
+		drawing.draw_landmarks(frm, res.face_landmarks, holistic.FACEMESH_TESSELATION)
 		drawing.draw_landmarks(frm, res.left_hand_landmarks, hands.HAND_CONNECTIONS)
 		drawing.draw_landmarks(frm, res.right_hand_landmarks, hands.HAND_CONNECTIONS)
 		cv2.putText(frm, str(c), (50,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0),2)

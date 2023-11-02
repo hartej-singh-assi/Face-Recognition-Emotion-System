@@ -27,7 +27,7 @@ def inference():
 		res = holisO.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 		drawing.draw_landmarks(frame, res.left_hand_landmarks, hands.HAND_CONNECTIONS)
 		drawing.draw_landmarks(frame, res.right_hand_landmarks, hands.HAND_CONNECTIONS)
-		drawing.draw_landmarks(frame, res.face_landmarks, holis.FACE_CONNECTIONS)
+		drawing.draw_landmarks(frame, res.face_landmarks, holis.FACEMESH_CONTOURS)
 
 		if res.face_landmarks:
 			if not(res.left_hand_landmarks):
@@ -68,7 +68,7 @@ def inference():
 			print("no")
 		cv2.imshow("window", frame)
 
-		if cv2.waitKey(1) == 27:
+		if cv2.waitKey(1) == ord('q'):
 			cap.release()
 			cv2.destroyAllWindows()
 			break
